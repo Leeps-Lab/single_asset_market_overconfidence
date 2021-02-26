@@ -31,7 +31,6 @@
 </style>
 {% endblock %} 
 {% block content %}
-<body>
 <div class = "survey-container">
     <div class="forms"> 
     	<div> 
@@ -57,27 +56,25 @@
         </br>
     </div>
         {% next_button %}
-    </div>
-     <div class = "signal">
-        <img src="{{img_sig_url}}"/>
-            <b>
-                    <br>Your private signal</br>
-                    <br style="font-size:300%"> {{ signal1black }} Black Balls and {{ signal1white }} White Balls.</br>
-                <br>
-            <img src="{{img_url}}"/>
-            </br>
-        </b>
-        <div class="trade-container">
-            <h6>Trading History </h6>
-                    <b style="color:#3EF849">Green </b>means Buy
-                <br><b style="color:#00FDF5">Blue </b>means Sell</br>
-            <h3>Trades</h3>
-            <trade-view>
-            </trade-view>
-        </div>
-    </div>
 </div>
-</body>
+<div class = "signal">
+    <img src="{{img_sig_url}}"/>
+        <b>
+                <br>Your private signal</br>
+                <br style="font-size:300%"> {{ signal1black }} Black Balls and {{ signal1white }} White Balls.</br>
+            <br>
+        <img src="{{img_url}}"/>
+        </br>
+        </b>
+    <div class="trade-container">
+        <h6>Trading History </h6>
+            <b style="color:#3EF849">Green </b>means Buy
+            <br><b style="color:#00FDF5">Blue </b>means Sell</br>
+        <h3>Trades</h3>
+        <trade-view>
+        </trade-view>
+     </div>
+</div>
 {% endblock %}
 
 
