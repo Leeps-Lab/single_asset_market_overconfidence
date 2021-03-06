@@ -220,7 +220,7 @@ class SingleAssetTextInterface extends PolymerElement {
         if (order.pcode == this.pcode)
             return;
 
-        this.$.modal.modal_text = `Do you want to ${order.is_bid ? 'sell' : 'buy'} for $${order.price}?`
+        this.$.modal.modal_text = `Do you want to ${order.is_bid ? 'sell' : 'buy'} for ${order.price}?`
         this.$.modal.on_close_callback = (accepted) => {
             if (!accepted)
                 return;
