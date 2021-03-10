@@ -439,7 +439,7 @@ class Player(markets_models.Player):
         ## set total payoff ###############################
         self.payoff_from_trading = self.profit
 
-        self.survey_avg_pay  = (int)((self.Question_1_payoff_pre + self.Question_2_payoff_pre + self.Question_3_payoff_pre + self.Question_1_payoff_post+self.Question_2_post+ self.Question_3_payoff_post)/6) 
+        self.survey_avg_pay  = (int)((self.Question_1_payoff_pre + self.Question_2_payoff_pre + self.Question_3_payoff_pre + self.Question_1_payoff_post+self.Question_2_payoff_post+ self.Question_3_payoff_post)/6) 
         
         self.total_payoff = self.survey_avg_pay + self.payoff_from_trading
 
