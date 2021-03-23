@@ -21,6 +21,16 @@
 }
 </style>
 {% endblock %} 
+{% block scripts %}
+<script type="text/javascript">
+setTimeout(
+    function () {
+        alert("Please make sure you answer all the questions");
+    },
+    15*1000 // 15 seconds
+);
+</script>
+{% endblock %}
 {% block content %}
 <body>
 <div class = "survey-container">

@@ -7,9 +7,9 @@ class Wait_for_trading(WaitPage):
 class Pre_Trading_Survey(Page):
     def get_timeout_seconds(self):
         if self.subsession.round_number<=2:
-            return 50
-        else:
             return 30
+        else:
+            return 20
     def before_next_page(self):
         if self.timeout_happened:
             self.player.save()
@@ -61,9 +61,9 @@ class Market(BaseMarketPage):
 class Post_Trading_Survey(BaseMarketPage):
     def get_timeout_seconds(self):
         if self.subsession.round_number<=2:
-            return 50
-        else:
             return 30
+        else:
+            return 20
     def before_next_page(self):
         if self.timeout_happened:
             self.player.save()
@@ -106,7 +106,7 @@ class Results_state(Page):
         }
 class Results_trading(Page):
     def get_timeout_seconds(self):
-        return 10
+        return 8
     def vars_for_template(self): 
         return{
             'profit': self.player.profit,
@@ -116,7 +116,7 @@ class Results_trading(Page):
         }
 class Results_survey(Page):
     def get_timeout_seconds(self):
-        return 10
+        return 8
     def vars_for_template(self): 
         return{
             'Question_1_pay_post': self.player.Question_1_payoff_post,
@@ -129,7 +129,7 @@ class Results_survey(Page):
         }
 class Results_total(Page):
     def get_timeout_seconds(self):
-        return 10
+        return 8
     def vars_for_template(self): 
         return{
             'total_pay':self.player.total_payoff,
@@ -141,7 +141,7 @@ class Results_sum(Page):
         if self.subsession.round_number==2:
             return 1000
         else:
-            return 10
+            return 8
     def before_next_page(self):
         if self.timeout_happened:
             self.player.save()

@@ -13,7 +13,7 @@ import math
 class Constants(BaseConstants):
     name_in_url = 'single_asset_market_overconfidence'
     players_per_group = None
-    num_rounds = 17
+    num_rounds = 16
     # the columns of the config CSV and their types
     # this dict is used by ConfigManager
     config_fields = {
@@ -424,6 +424,9 @@ class Player(markets_models.Player):
         R = self.Question_3_post
         self.Question_3_payoff_post= (int) (100 - (math.pow((C - R),2)))
         ### set to zero if did not answer survye questions
+        #################################################
+        ## change zero to did not anser #################
+        ######################################################################################################
         if self.Question_1_pre==0:
             self.Question_1_payoff_pre = 0
         if self.Question_1_post==0:
