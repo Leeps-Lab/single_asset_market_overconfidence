@@ -427,17 +427,17 @@ class Player(markets_models.Player):
         #################################################
         ## change zero to did not anser #################
         ######################################################################################################
-        if self.Question_1_pre==0:
+        if self.Question_1_pre==-1:
             self.Question_1_payoff_pre = 0
-        if self.Question_1_post==0:
+        if self.Question_1_post==-1:
             self.Question_1_payoff_post = 0
-        if self.Question_2_pre==0:
+        if self.Question_2_pre==-1:
             self.Question_2_payoff_pre = 0
-        if self.Question_2_post==0:
+        if self.Question_2_post==-1:
             self.Question_2_payoff_post = 0
-        if self.Question_3_pre==0:
+        if self.Question_3_pre==-1:
             self.Question_3_payoff_pre = 0
-        if self.Question_3_post==0:
+        if self.Question_3_post==-1:
             self.Question_3_payoff_post = 0
         ## set total payoff ###############################
         self.payoff_from_trading = self.profit

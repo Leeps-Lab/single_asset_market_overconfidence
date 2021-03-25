@@ -12,6 +12,9 @@ class Pre_Trading_Survey(Page):
             return 20
     def before_next_page(self):
         if self.timeout_happened:
+            self.player.Question_1_pre = -1
+            self.player.Question_2_pre = -1
+            self.player.Question_3_pre = -1
             self.player.save()
 
     def vars_for_template(self):
@@ -66,6 +69,9 @@ class Post_Trading_Survey(BaseMarketPage):
             return 20
     def before_next_page(self):
         if self.timeout_happened:
+            self.player.Question_1_post = -1
+            self.player.Question_2_post = -1
+            self.player.Question_3_post = -1
             self.player.save()
 
 
