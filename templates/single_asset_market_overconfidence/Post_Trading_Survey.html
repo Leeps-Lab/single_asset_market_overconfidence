@@ -7,8 +7,15 @@
 
 {% block scripts %}
         <script type="module" src="/static/single_asset_market_overconfidence/trade_view.js"></script>
+        <script type="text/javascript">
+            setTimeout(
+            function () {
+            alert("Please make sure you answer all the questions");
+             },
+            15*1000 // 15 seconds
+        );
+        </script>
 {% endblock %}
-
 {% block styles %}
 <style>
 .survey-container{
@@ -30,15 +37,6 @@
 }
 </style>
 {% endblock %} 
-{% block scripts %}
-<script type="text/javascript">
-setTimeout(
-    function () {
-        alert("Please make sure you answer all the questions");
-    },
-    15*1000 // 15 seconds
-);
-</script>
 {% block content %}
 <div class = "survey-container">
     <div class="forms"> 
