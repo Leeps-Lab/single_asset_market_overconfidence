@@ -423,10 +423,7 @@ class Player(markets_models.Player):
         ##R is the reported belief
         R = self.Question_3_post
         self.Question_3_payoff_post= (int) (100 - (math.pow((C - R),2)))
-        ### set to zero if did not answer survye questions
-        #################################################
-        ## change zero to did not anser #################
-        ######################################################################################################
+        ### set to zero if did not answer survye questions########################
         if self.Question_1_pre==-1:
             self.Question_1_payoff_pre = 0
         if self.Question_1_post==-1:

@@ -6,12 +6,21 @@
 {% endblock %}
 
 {% block scripts %}
-        <script type="module" src="/static/single_asset_market_overconfidence/trade_view.js"></script>
-        <script type="text/javascript">
-            setTimeout(
+<div id="myModal" class="modal">
+     <div class="modal-content">
+            <div class="modal-body">
+              <p></b>Please Answer All The Questions</b></p>
+              <p>Then continue to the next page</p>
+            </div>
+      </div>
+</div>
+    <script type="module" src="/static/single_asset_market_overconfidence/trade_view.js"></script>
+    <script type="text/javascript">
+       var modal = document.getElementById("myModal");
+        setTimeout(
             function () {
-            alert("Please make sure you answer all the questions");
-             },
+                modal.style.display = "block";
+            },
             15*1000 // 15 seconds
         );
         </script>
@@ -35,6 +44,11 @@
     text-align: center;
     justify-content: center;
 }
+.modal-body {
+  padding: 2px 16px;
+  background-color: #d40404;
+  text-align: center;
+  color: white;
 </style>
 {% endblock %} 
 {% block content %}

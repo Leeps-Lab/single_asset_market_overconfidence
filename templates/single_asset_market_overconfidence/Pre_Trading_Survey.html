@@ -19,16 +19,32 @@
 .forms {
     flex: 65%;
 }
+/* The alert message box */
+.modal-body {
+  padding: 2px 16px;
+  background-color: #d40404;
+  text-align: center;
+  color: white;
+}
 </style>
 {% endblock %} 
 {% block scripts %}
+<div id="myModal" class="modal">
+     <div class="modal-content">
+            <div class="modal-body">
+              <p></b>Please Answer All The Questions</b></p>
+              <p>Then continue to the next page</p>
+            </div>
+      </div>
+</div>
 <script type="text/javascript">
-setTimeout(
-    function () {
-        alert("Please make sure you answer all the questions");
-    },
-    15*1000 // 15 seconds
-);
+    var modal = document.getElementById("myModal");
+        setTimeout(
+            function () {
+                modal.style.display = "block";
+            },
+            15*1000 // 15 seconds
+        );
 </script>
 {% endblock %}
 {% block content %}
