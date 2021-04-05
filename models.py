@@ -86,8 +86,13 @@ class Subsession(markets_models.Subsession):
                 p.signal_nature = sig
         else:
             sig = self.config.sig_b_c
+            i=0
             for p in self.get_players():
-                p.signal_nature = sig
+                if i%2 == 0:
+                    p.signal_nature = sig
+                else:
+                    p.signal_nature = (1-sig)
+                i = i+1
     def set_balls_signal(self,env):
             player_bb = self.get_bb_array(env)
             i=0
@@ -97,7 +102,6 @@ class Subsession(markets_models.Subsession):
                 i=i+1
     #######################################################################
     ### creates an array of player private signals  
-    ### 
     #######################################################################
     def get_bb_array(self, env):
         if env==0:
