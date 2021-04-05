@@ -72,11 +72,11 @@ class Post_Trading_Survey(BaseMarketPage):
             return 20
     def before_next_page(self):
         if self.timeout_happened:
-            if self.player.Question_1_pre == 0:
+            if self.player.Question_1_post == 0:
                 self.player.Question_1_post = -1
-            if self.player.Question_2_pre == 0:
+            if self.player.Question_2_post == 0:
                 self.player.Question_2_post = -1
-            if self.player.Question_3_pre == 0:
+            if self.player.Question_3_post == 0:
                 self.player.Question_3_post = -1
             self.player.save()
 
