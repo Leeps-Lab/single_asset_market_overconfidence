@@ -400,7 +400,11 @@ class Player(markets_models.Player):
         except ValueError: 
             self.Question_1_post_int = -2
 
-        if self.Question_1_post_int>p_n_post:
+        if self.Question_1_post_int > 100:
+        	self.Question_1_payoff_post = 0
+        elif self.Question_1_post_int < 0:
+        	self.Question_1_payoff_post = 0
+        elif self.Question_1_post_int>p_n_post:
             self.Question_1_payoff_post = self.world_state*200 +100
         else:
             self.Question_1_payoff_post = n_asset_value_post
@@ -411,7 +415,11 @@ class Player(markets_models.Player):
         except ValueError: 
             self.Question_1_pre_int = -2
 
-        if self.Question_1_pre_int>p_n_pre:
+        if self.Question_1_pre_int > 100:
+            self.Question_1_payoff_pre = 0
+        elif self.Question_1_pre_int < 0:
+            self.Question_1_payoff_pre = 0
+        elif self.Question_1_pre_int>p_n_pre:
             self.Question_1_payoff_pre = self.world_state*200 +100
         else:
             self.Question_1_payoff_pre = n_asset_value_pre
