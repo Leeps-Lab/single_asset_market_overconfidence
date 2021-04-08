@@ -448,11 +448,11 @@ class Player(markets_models.Player):
         R = self.Question_3_post
         self.Question_3_payoff_post= (int) (100 - (math.pow((C - R),2)))
         ### set to zero if did not answer survye questions########################
-        if self.Question_1_pre=='-1':
+        if self.Question_1_pre_int==-1:
             self.Question_1_payoff_pre = 0
         if self.Question_1_pre==-2:
             self.Question_1_payoff_pre = 0
-        if self.Question_1_post=='-1':
+        if self.Question_1_post_int==-1:
             self.Question_1_payoff_post = 0
         if self.Question_1_post==-2:
             self.Question_1_payoff_post = 0
