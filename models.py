@@ -321,6 +321,8 @@ class Player(markets_models.Player):
     total_white = models.IntegerField()
     total_black_low = models.IntegerField()
     total_black_high = models.IntegerField()
+    Question_1_pre_int = models.IntegerField()
+    Question_1_post_int = models.IntegerField()
     Question_1_payoff_pre = models.IntegerField(initial=0)
     Question_2_payoff_pre = models.IntegerField(initial=0)
     Question_3_payoff_pre = models.IntegerField(initial=0)
@@ -334,11 +336,11 @@ class Player(markets_models.Player):
     shares = models.IntegerField()
     average_payoff = models.IntegerField()
 ## Questions Pre
-    Question_1_pre = models.IntegerField(min=0, max=100,
+    Question_1_pre = models.StringField(
         label='''
         Your answer:'''
     )
-    Question_1_post = models.IntegerField(min=0, max=100,
+    Question_1_post = models.StringField(
         label='''
         Your answer:'''
     )
@@ -393,13 +395,23 @@ class Player(markets_models.Player):
         n_asset_binomail_post = np.random.binomial(1, p_n_post/100)
         n_asset_value_post = n_asset_binomail_post*200 +100
          ################question 1 post#########################################
-        if self.Question_1_post>p_n_post:
+        try:
+            self.Question_1_post_int = int(self.Question_1_post)
+        except ValueError: 
+            self.Question_1_post_int = -2
+
+        if self.Question_1_post_int>p_n_post:
             self.Question_1_payoff_post = self.world_state*200 +100
         else:
             self.Question_1_payoff_post = n_asset_value_post
 
         ################question 1 pre#########################################
-        if self.Question_1_pre>p_n_pre:
+        try:
+            self.Question_1_pre_int = int(self.Question_1_pre)
+        except ValueError: 
+            self.Question_1_pre_int = -2
+
+        if self.Question_1_pre_int>p_n_pre:
             self.Question_1_payoff_pre = self.world_state*200 +100
         else:
             self.Question_1_payoff_pre = n_asset_value_pre
@@ -430,7 +442,11 @@ class Player(markets_models.Player):
         ### set to zero if did not answer survye questions########################
         if self.Question_1_pre==-1:
             self.Question_1_payoff_pre = 0
+        if self.Question_1_pre==-2:
+            self.Question_1_payoff_pre = 0
         if self.Question_1_post==-1:
+            self.Question_1_payoff_post = 0
+        if self.Question_1_post==-2:
             self.Question_1_payoff_post = 0
         if self.Question_2_pre==-1:
             self.Question_2_payoff_pre = 0
