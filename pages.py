@@ -6,7 +6,7 @@ class Wait_for_trading(WaitPage):
 
 class Pre_Trading_Survey(Page):
     def get_timeout_seconds(self):
-        return 30
+        return 40
     def before_next_page(self):
         if self.timeout_happened:
             if self.player.Question_1_pre == '':
@@ -63,7 +63,7 @@ class Market(BaseMarketPage):
         }
 class Post_Trading_Survey(BaseMarketPage):
     def get_timeout_seconds(self):
-        return 30
+        return 40
     def before_next_page(self):
         if self.timeout_happened:
             if self.player.Question_1_post == '':
