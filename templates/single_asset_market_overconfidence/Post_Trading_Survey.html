@@ -54,6 +54,10 @@
   background-color: #d40404;
   text-align: center;
   color: white;
+}
+#id_Question_1_post.form-control {
+    max-width: 100px;
+}
 </style>
 {% endblock %} 
 {% block content %}
@@ -63,7 +67,9 @@
         <br>
             <b> Question 1: </b> What do you think is the probability (out of 100) that the true state is 'G'?
         </br>
+        <div class = "Question_1_post">
         {% formfield player.Question_1_post %}
+        </div>
     </div>
     <div> 
         <br>
