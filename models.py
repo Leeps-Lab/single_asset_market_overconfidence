@@ -203,11 +203,22 @@ class Group(markets_models.Group):
             if best_bid and best_bid.pcode == enter_msg['pcode'] and enter_msg['price'] <= best_bid.price:
                 self._send_error(enter_msg['pcode'], 'Cannot enter an ask that crosses your own bid')
                 return
-        if enter_msg['price'] >300 or enter_msg['price'] <100:
+        # if enter_msg['price'] >300 or enter_msg['price'] <100:
+        #     return
+        if enter_msg['is_bid'] and self.get_player(enter_msg['pcode']).settled_assets['A'] >= 8:
+            self._send_error(enter_msg['pcode'], 'You are holding too many assets')
             return
         
         super()._on_enter_event(event)
-        
+
+    def _on_accept_event(self, event):
+        accepted_order = event.value
+        if not accepted_order['is_bid'] and self.get_player(event.participant.code).settled_assets['A'] >= 8:
+            self._send_error(event.participant.code, 'You are holding too many assets')
+            return
+
+        super()._on_accept_event(event)
+
     def confirm_enter(self, order):
         player = self.get_player(order.pcode)
         player.refresh_from_db()
