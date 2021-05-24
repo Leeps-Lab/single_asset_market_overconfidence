@@ -86,7 +86,7 @@ class Subsession(markets_models.Subsession):
                 p.signal_nature = sig
         else:
             sig = self.config.sig_b_c
-            i=0
+            i=1
             for p in self.get_players():
                 if i%2 == 0:
                     p.signal_nature = sig
