@@ -23,7 +23,6 @@ class Constants(BaseConstants):
         'allow_short': bool,
         'state': int,
         'sig_a': int,
-        'sig_b_c': int,
         'env': int, 
         'player_1_a': int, 
         'player_2_a': int, 
@@ -40,7 +39,15 @@ class Constants(BaseConstants):
         'player_5_b_c': int, 
         'player_6_b_c': int, 
         'player_7_b_c': int, 
-        'player_8_b_c': int
+        'player_8_b_c': int,
+        'player_1_b_c_hi': int, 
+        'player_2_b_c_hi': int, 
+        'player_3_b_c_hi': int, 
+        'player_4_b_c_hi': int, 
+        'player_5_b_c_hi': int, 
+        'player_6_b_c_hi': int, 
+        'player_7_b_c_hi': int, 
+        'player_8_b_c_hi': int
     }
 
 
@@ -85,14 +92,12 @@ class Subsession(markets_models.Subsession):
             for p in self.get_players():
                 p.signal_nature = sig
         else:
-            sig = self.config.sig_b_c
-            i=1
+            sig = self.get_b_c_signal()
+            i=0
             for p in self.get_players():
-                if i%2 == 0:
-                    p.signal_nature = sig
-                else:
-                    p.signal_nature = (1-sig)
-                i = i+1
+                p.signal_nature = sig[i]
+                i=i+1
+                
     def set_balls_signal(self,env):
             player_bb = self.get_bb_array(env)
             i=0
@@ -110,7 +115,9 @@ class Subsession(markets_models.Subsession):
         else:
             return [self.config.player_1_b_c,self.config.player_2_b_c, self.config.player_3_b_c, self.config.player_4_b_c, 
                     self.config.player_5_b_c, self.config.player_6_b_c,self.config.player_7_b_c, self.config.player_8_b_c]
-
+    def get_b_c_signal(self):
+        return [self.config.player_1_b_c_hi,self.config.player_2_b_c_hi, self.config.player_3_b_c_hi, self.config.player_4_b_c_hi, 
+                    self.config.player_5_b_c_hi, self.config.player_6_b_c_hi,self.config.player_7_b_c_hi, self.config.player_8_b_c_hi]
     #######################################################################
     ### sets all profits players 
     ### player
